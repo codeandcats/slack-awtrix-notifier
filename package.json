@@ -12,7 +12,7 @@
     "start": "dotenvx run -q -f .env .env.config -- node --experimental-strip-types --no-warnings ./index.ts"
   },
   "type": "module",
-  "author": "",
+  "author": "Benji <codeandcats@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@dotenvx/dotenvx": "^1.51.4",
