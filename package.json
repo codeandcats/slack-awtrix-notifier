@@ -9,8 +9,7 @@
   "scripts": {
     "dismiss": "npm start -- --dismiss",
     "snooze": "npm start -- --snooze",
-    "start": "dotenvx run -q -f .env .env.config -- node --experimental-strip-types --no-warnings ./index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "dotenvx run -q -f .env .env.config -- node --experimental-strip-types --no-warnings ./index.ts"
   },
   "type": "module",
   "author": "",
