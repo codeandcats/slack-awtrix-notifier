@@ -22,8 +22,8 @@ class EnvVarNotSetError extends Error {
 
 type AwtrixConfig = {
   host: string;
-  user: string;
-  password: string;
+  user?: string;
+  password?: string;
 };
 
 type Config = {
@@ -45,8 +45,6 @@ function getConfig(): Config {
 
   if (!slackToken) throw new EnvVarNotSetError("SLACK_TOKEN");
   if (!awtrixHost) throw new EnvVarNotSetError("AWTRIX_HOST");
-  if (!awtrixUser) throw new EnvVarNotSetError("AWTRIX_USER");
-  if (!awtrixPassword) throw new EnvVarNotSetError("AWTRIX_PASSWORD");
 
   const awtrix = {
     host: awtrixHost,
@@ -123,16 +121,18 @@ async function sendAwtrixRequest({
   const url = `http://${awtrixConfig.host}${path}`;
 
   const auth =
-    "Basic " +
-    Buffer.from(`${awtrixConfig.user}:${awtrixConfig.password}`).toString(
-      "base64"
-    );
+    awtrixConfig.user && awtrixConfig.password
+      ? "Basic " +
+        Buffer.from(`${awtrixConfig.user}:${awtrixConfig.password}`).toString(
+          "base64"
+        )
+      : undefined;
 
   const response = await fetch(url, {
     method: method,
     headers: {
       "Content-Type": "application/json",
-      Authorization: auth,
+      ...(auth ? { Authorization: auth } : {}),
     },
     body: method === "POST" ? JSON.stringify(body) : undefined,
   });
