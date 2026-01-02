@@ -11,7 +11,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DEFAULT_AWTRIX_ICON = 29018;
+const DEFAULT_AWTRIX_ICON = 29039;
 
 class EnvVarNotSetError extends Error {
   constructor(varName: string) {
