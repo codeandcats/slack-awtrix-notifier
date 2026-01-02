@@ -3,6 +3,9 @@
   "description": "Checks Slack for unread messages and notifies an Awtrix device if any are found",
   "version": "1.0.0",
   "main": "index.ts",
+  "engines": {
+    "node": ">=20.10.0"
+  },
   "scripts": {
     "dismiss": "npm start -- --dismiss",
     "snooze": "npm start -- --snooze",
